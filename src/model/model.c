@@ -7,6 +7,11 @@ static inline void entity_update_acc(struct Entity *e, struct MT19937 *gen) {
     generator_vct(gen, e->max_acc, &e->acc_x, &e->acc_y);
 }
 
+static inline void entity_chase_acc(struct Entity *m, struct Entity *t) {
+    double diff_x = t->loc_x - m->loc_x;
+    double diff_y = t->loc_y - m->loc_y;
+}
+
 static inline void entity_update_vel(struct Entity *e) {
     e->vel_x += e->acc_x;
     e->vel_y += e->acc_y;
