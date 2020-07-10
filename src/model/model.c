@@ -104,7 +104,7 @@ int model_initialize(struct Model *m,
     m->missle.max_spd_sq = missle_max_spd * missle_max_spd;
     
     m->stat = STAT_ONGOING;
-    
+
     m->target.acc_x = 0;
     m->target.acc_y = 0;
     m->target.vel_x = 0;
@@ -129,7 +129,7 @@ int model_update(struct Model *m) {
         m->stat = STAT_FAILURE;
         return 0;
     }
-    entity_chase_acc(&m->missle, &m->gen);
+    entity_chase_acc(&m->missle, &m->target);
     entity_update_vel(&m->missle);
     entity_update_loc(&m->missle);
     if (m->missle.loc_x < 0 || m->missle.loc_x >= m->width ||
