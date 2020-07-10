@@ -10,6 +10,10 @@ static inline void entity_update_acc(struct Entity *e, struct MT19937 *gen) {
 static inline void entity_chase_acc(struct Entity *m, struct Entity *t) {
     double diff_x = t->loc_x - m->loc_x;
     double diff_y = t->loc_y - m->loc_y;
+    double mag_sq = diff_x * diff_x + diff_y * diff_y;
+    double rat = sqrt(m->max_vel_sq / mag_sq);
+    diff_x *= rat;
+    diff_y *= rat;
 }
 
 static inline void entity_update_vel(struct Entity *e) {
@@ -65,6 +69,7 @@ int model_initialize(struct Model *m,
         return 5;
     }
     m->target.max_acc = target_max_acc;
+    m->target.max_acc_sq = target_max_acc * target_max_acc;
     if (target_max_spd <= 0) {
         return 6;
     }
@@ -74,6 +79,7 @@ int model_initialize(struct Model *m,
         return 7;
     }
     m->missle.max_acc = missle_max_acc;
+    m->missle.max_acc_sq = missle_max_acc * missle_max_acc;
     if (missle_max_spd <= 0) {
         return 8;
     }

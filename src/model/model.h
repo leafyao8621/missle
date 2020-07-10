@@ -11,7 +11,7 @@ struct Entity {
     double acc_x, acc_y;
     double vel_x, vel_y;
     double loc_x, loc_y;
-    double max_acc, max_spd, max_spd_sq;
+    double max_acc, max_acc_sq, max_spd, max_spd_sq;
 };
 
 struct Model {
