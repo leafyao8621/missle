@@ -22,8 +22,7 @@ struct Model {
 };
 
 int model_initialize(struct Model *m,
-                     double width,
-                     double height,
+                     double dist,
                      double blast_radius,
                      unsigned seed,
                      double target_max_acc,
@@ -31,5 +30,6 @@ int model_initialize(struct Model *m,
                      double missle_max_acc,
                      double missle_max_spd);
 int model_update(struct Model *m);
+int model_log(struct Model *m, FILE *fout);
 
 #endif
