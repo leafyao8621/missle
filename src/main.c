@@ -1,10 +1,47 @@
-#include "engine/engine.h"
+#include "runner/runner.h"
+
+static const char *ext[5] = {
+    "txt",
+    "csv",
+    "tsv",
+    "json",
+    "xml"
+};
+
+static char buf[100];
 
 int main(void) {
-    struct Engine engine;
-    double prob;
-    engine_initialize(&engine, 12, 1000000, 100, 10, 3, 10, 10, 1, 3, 1, 3);
-    engine_run(&engine, &prob, 0, 0);
-    printf("prob: %lf\n", prob);
+    FILE *fout;
+    for (int i = 0; i < 5; ++i) {
+        printf("mode: %s\n", ext[i]);
+        snprintf(buf, 99, "out/data.%s", ext[i]);
+        fout = fopen(buf, "w");
+        runner_run(10000, 24, 100000,
+                   1, 1500,
+                   1, 1500,
+                   1, 1500,
+                   1, 1500,
+                   10,
+                   1, 1500,
+                   1, 1500,
+                   1, 1500,
+                   1, 1500,
+                   i + 1, fout);
+        fclose(fout);
+    }
+    puts("mode: bin");
+    fout = fopen("out/data.bin", "wb");
+    runner_run(10000, 24, 100000,
+               1, 1500,
+               1, 1500,
+               1, 1500,
+               1, 1500,
+               10,
+               1, 1500,
+               1, 1500,
+               1, 1500,
+               1, 1500,
+               LOG_BIN, fout);
+    fclose(fout);
     return 0;
 }
