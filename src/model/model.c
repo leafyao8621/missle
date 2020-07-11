@@ -70,6 +70,7 @@ int model_initialize(struct Model *m,
     if (dist <= 0) {
         return 2;
     }
+    m->dist = dist;
     m->missle.loc_x = dist;
 
     if (blast_radius <= 0) {

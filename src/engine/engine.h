@@ -3,14 +3,10 @@
 
 #include "../model/model.h"
 
-#define LOG_NONE 0
-#define LOG_CSV  1
-#define LOG_TSV  2
-#define LOG_BIN  3
-
 struct Engine {
     unsigned n_thread;
     unsigned n_iter;
+    unsigned seed;
     struct Model model;
 };
 
@@ -28,6 +24,6 @@ int engine_initialize(struct Engine *e,
                       double missle_max_spd);
 int engine_step(struct Engine *e, char verbose, FILE *fout);
 int engine_one_iter(struct Engine *e, char *success, char verbose, FILE *fout);
-int engine_run(struct Engine *e, char log_mode, FILE *fout);
+int engine_run(struct Engine *e, double *prob, char verbose, FILE *fout);
 
 #endif
