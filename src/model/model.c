@@ -88,7 +88,7 @@ int model_initialize(struct Model *m,
         return 5;
     }
     m->rate = rate;
-    
+
     mt19937_initialize(&m->gen, seed);
 
     if (target_max_acc <= 0) {
@@ -129,6 +129,7 @@ int model_initialize(struct Model *m,
     m->missle.vel_x = 0;
     m->missle.vel_y = 0;
     m->missle.loc_y = 0;
+
     return 0;
 }
 
@@ -149,11 +150,23 @@ int model_update(struct Model *m) {
         m->stat = STAT_SUCCESS;
         return 0;
     }
+
+    m->fuel -= m->rate *
+               (m->missle.acc_x * m->missle.acc_x +
+                m->missle.acc_y * m->missle.acc_y);
+    
+    if (m->fuel <= 0) {
+        m->stat = STAT_FAILURE;
+        return 0;
+    }
+
+    return 0;
 }
 
 int model_log(struct Model *m, FILE *fout) {
     fprintf(fout, "stat: %s\n", stat_lookup[m->stat]);
     fprintf(fout, "%s\n", "missle:");
+    fprintf(fout, "fuel: %lf\n", m->fuel);
     fprintf(fout, "acc: %lf %lf\n", m->missle.acc_x, m->missle.acc_y);
     fprintf(fout, "vel: %lf %lf\n", m->missle.vel_x, m->missle.vel_y);
     fprintf(fout, "loc: %lf %lf\n", m->missle.loc_x, m->missle.loc_y);
