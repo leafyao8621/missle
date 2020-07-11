@@ -6,11 +6,29 @@
 struct SubEngine {
     unsigned id;
     struct Engine engine;
+    char verbose;
+    FILE *fout;
     double success_cnt;
 };
 
 static void *sub_runner(void *sub_engine) {
-
+    struct SubEngine *se = (struct SubEngine*)sub_engine;
+    unsigned n_iter = se->engine.n_iter / se->engine.n_thread;
+    if (se->id == se->engine.n_thread - 1) {
+        n_iter += se->engine.n_iter % se->engine.n_thread;
+    }
+    char success = 0;
+    double success_cnt = 0;
+    for (unsigned i = 0, ii = se->id * se->engine.n_iter / se->engine.n_thread;
+         i < n_iter; ++i, ++ii) {
+        engine_one_iter(&se->engine, &success, 0, 0);
+        success_cnt += success;
+        if (se->verbose) {
+            fprintf(se->fout, "iter: %u success: %hhd\n", ii, success);
+        }
+    }
+    se->success_cnt = success_cnt;
+    return 0;
 }
 
 int engine_initialize(struct Engine *e,
@@ -112,6 +130,8 @@ int engine_run(struct Engine *e, double *prob, char verbose, FILE *fout) {
         sub_engines_iter->id = i;
         sub_engines_iter->engine = *e;
         mt19937_initialize(&sub_engines_iter->engine.model.gen, seed);
+        sub_engines_iter->verbose = verbose;
+        sub_engines_iter->fout = fout;
         pthread_create(pool_iter, 0, sub_runner, sub_engines_iter);
     }
 
