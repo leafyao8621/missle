@@ -16,13 +16,15 @@ struct Entity {
 
 struct Model {
     char stat;
-    double width, height, blast_radius, blast_rasius_sq;
+    double fuel, rate, blast_radius, blast_rasius_sq;
     struct MT19937 gen;
     struct Entity target, missle;
 };
 
 int model_initialize(struct Model *m,
                      double dist,
+                     double fuel,
+                     double rate,
                      double blast_radius,
                      unsigned seed,
                      double target_max_acc,

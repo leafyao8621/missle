@@ -38,8 +38,8 @@ static inline void entity_update_vel(struct Entity *e) {
     double spd_sq = e->vel_x * e->vel_x + e->vel_y * e->vel_y;
     if (spd_sq > e->max_spd_sq) {
         double rat = sqrt(e->max_spd_sq / spd_sq);
-        e->vel_x /= rat;
-        e->vel_y /= rat;
+        e->vel_x *= rat;
+        e->vel_y *= rat;
     }
 }
 
@@ -56,6 +56,8 @@ static inline double entity_dist_sq(struct Entity *a, struct Entity *b) {
 
 int model_initialize(struct Model *m,
                      double dist,
+                     double fuel,
+                     double rate,
                      double blast_radius,
                      unsigned seed,
                      double target_max_acc,
@@ -77,28 +79,38 @@ int model_initialize(struct Model *m,
     m->blast_radius = blast_radius;
     m->blast_rasius_sq = blast_radius * blast_radius;
 
+    if (fuel <= 0) {
+        return 4;
+    }
+    m->fuel = fuel;
+
+    if (rate <= 0) {
+        return 5;
+    }
+    m->rate = rate;
+    
     mt19937_initialize(&m->gen, seed);
 
     if (target_max_acc <= 0) {
-        return 4;
+        return 6;
     }
     m->target.max_acc = target_max_acc;
     m->target.max_acc_sq = target_max_acc * target_max_acc;
 
     if (target_max_spd <= 0) {
-        return 5;
+        return 7;
     }
     m->target.max_spd = target_max_spd;
     m->target.max_spd_sq = target_max_spd * target_max_spd;
 
     if (missle_max_acc <= 0) {
-        return 6;
+        return 8;
     }
     m->missle.max_acc = missle_max_acc;
     m->missle.max_acc_sq = missle_max_acc * missle_max_acc;
 
     if (missle_max_spd <= 0) {
-        return 7;
+        return 9;
     }
     m->missle.max_spd = missle_max_spd;
     m->missle.max_spd_sq = missle_max_spd * missle_max_spd;
