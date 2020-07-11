@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <math.h>
 #include "../util/generator.h"
 #include "model.h"

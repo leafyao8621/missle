@@ -1,6 +1,7 @@
 #ifndef _MODEL_H_
 #define _MODEL_H_
 
+#include <stdio.h>
 #include "../util/generator.h"
 
 #define STAT_ONGOING 0
