@@ -83,6 +83,7 @@ int model_initialize(struct Model *m,
         return 4;
     }
     m->fuel = fuel;
+    m->max_fuel = fuel;
 
     if (rate <= 0) {
         return 5;
@@ -122,7 +123,7 @@ int model_initialize(struct Model *m,
     m->target.vel_x = 0;
     m->target.vel_y = 0;
     m->target.loc_x = 0;
-    m->target.loc_x = 0;
+    m->target.loc_y = 0;
 
     m->missle.acc_x = 0;
     m->missle.acc_y = 0;

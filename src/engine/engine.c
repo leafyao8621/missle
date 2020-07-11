@@ -17,6 +17,7 @@ static void *sub_runner(void *sub_engine) {
     if (se->id == se->engine.n_thread - 1) {
         n_iter += se->engine.n_iter % se->engine.n_thread;
     }
+
     char success = 0;
     double success_cnt = 0;
     for (unsigned i = 0, ii = se->id * se->engine.n_iter / se->engine.n_thread;
@@ -83,12 +84,14 @@ int engine_one_iter(struct Engine *e, char *success, char verbose, FILE *fout) {
     }
 
     e->model.stat = STAT_ONGOING;
+    e->model.fuel = e->model.max_fuel;
+
     e->model.target.acc_x = 0;
     e->model.target.acc_y = 0;
     e->model.target.vel_x = 0;
     e->model.target.vel_y = 0;
     e->model.target.loc_x = 0;
-    e->model.target.loc_x = 0;
+    e->model.target.loc_y = 0;
 
     e->model.missle.acc_x = 0;
     e->model.missle.acc_y = 0;
@@ -118,12 +121,11 @@ int engine_run(struct Engine *e, double *prob, char verbose, FILE *fout) {
 
     double n_thread = e->n_thread;
     struct SubEngine *sub_engines =
-        malloc(sizeof(struct SubEngine) * e->n_iter);
+        malloc(sizeof(struct SubEngine) * e->n_thread);
     struct SubEngine *sub_engines_iter = sub_engines;
     pthread_t *pool =
         malloc(sizeof(pthread_t) * e->n_thread);
     pthread_t *pool_iter = pool;
-
     for (unsigned i = 0, seed = e->seed;
          i < n_thread;
          ++i, ++seed, ++sub_engines_iter, ++pool_iter) {

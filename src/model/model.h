@@ -17,7 +17,7 @@ struct Entity {
 
 struct Model {
     char stat;
-    double dist, fuel, rate, blast_radius, blast_rasius_sq;
+    double dist, fuel, rate, blast_radius, blast_rasius_sq, max_fuel;
     struct MT19937 gen;
     struct Entity target, missle;
 };
