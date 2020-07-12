@@ -40,7 +40,7 @@ int main(void) {
     }
     puts("mode: bin");
     fout = fopen("out/data.bin", "wb");
-    runner_run(10000, 24, 100000,
+    runner_run(10000, 24, 10000,
                1, 1500,
                1, 1500,
                1, 1500,
