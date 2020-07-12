@@ -27,7 +27,7 @@ target_max_acc: 1028.354362
 target_max_spd: 1026.043822
 missle_max_acc: 1430.136623
 missle_max_spd: 1225.086153
-prob: 0.575450
+prob: 0.570000
 setting: 3
 dist: 6.918453
 fuel: 504.771303
@@ -47,7 +47,7 @@ target_max_acc: 1376.743411
 target_max_spd: 811.780516
 missle_max_acc: 1072.149103
 missle_max_spd: 198.055766
-prob: 0.467360
+prob: 0.473600
 setting: 5
 dist: 814.274008
 fuel: 621.087399
@@ -67,7 +67,7 @@ target_max_acc: 927.032709
 target_max_spd: 426.081444
 missle_max_acc: 770.194226
 missle_max_spd: 99.279338
-prob: 0.060880
+prob: 0.060200
 setting: 7
 dist: 975.945382
 fuel: 85.609840
@@ -87,7 +87,7 @@ target_max_acc: 136.598566
 target_max_spd: 503.913973
 missle_max_acc: 451.749386
 missle_max_spd: 617.362643
-prob: 0.307800
+prob: 0.314100
 setting: 9
 dist: 171.862560
 fuel: 116.206396
@@ -107,7 +107,7 @@ target_max_acc: 299.222362
 target_max_spd: 1150.553189
 missle_max_acc: 1285.418596
 missle_max_spd: 1248.152660
-prob: 0.280690
+prob: 0.276300
 setting: 11
 dist: 528.127306
 fuel: 465.357305
@@ -117,7 +117,7 @@ target_max_acc: 444.646593
 target_max_spd: 1308.716295
 missle_max_acc: 1326.020773
 missle_max_spd: 1474.548279
-prob: 0.715980
+prob: 0.711100
 setting: 12
 dist: 488.941945
 fuel: 701.637518
@@ -137,7 +137,7 @@ target_max_acc: 576.787556
 target_max_spd: 893.563967
 missle_max_acc: 1416.446803
 missle_max_spd: 655.094193
-prob: 0.702510
+prob: 0.708800
 setting: 14
 dist: 1481.450591
 fuel: 535.019244
@@ -157,7 +157,7 @@ target_max_acc: 802.302366
 target_max_spd: 559.407404
 missle_max_acc: 885.711852
 missle_max_spd: 4.607738
-prob: 0.437080
+prob: 0.444400
 setting: 16
 dist: 59.883365
 fuel: 823.675713
@@ -167,7 +167,7 @@ target_max_acc: 120.340022
 target_max_spd: 120.609235
 missle_max_acc: 458.884421
 missle_max_spd: 353.322859
-prob: 0.310220
+prob: 0.305500
 setting: 17
 dist: 496.748248
 fuel: 990.287453
@@ -187,7 +187,7 @@ target_max_acc: 520.174375
 target_max_spd: 874.942566
 missle_max_acc: 65.602934
 missle_max_spd: 349.728949
-prob: 0.149880
+prob: 0.151700
 setting: 19
 dist: 1319.992844
 fuel: 835.220761
