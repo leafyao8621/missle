@@ -2,4 +2,4 @@
 main
 src/*/*.o
 src/*.o
-out/data.*
+out/data*
