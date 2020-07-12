@@ -14,6 +14,7 @@ int runner_run(unsigned n_param,
                double target_max_spd_low, double target_max_spd_high,
                double missle_max_acc_low, double missle_max_acc_high,
                double missle_max_spd_low, double missle_max_spd_high,
+               char stat,
                char log_mode, FILE *fout) {
     if (log_mode && !fout) {
         return 1;
@@ -86,6 +87,9 @@ int runner_run(unsigned n_param,
                           missle_max_acc,
                           missle_max_spd);
         engine_run(&engine, &prob, 0, 0);
+        if (stat) {
+            printf("setting: %u\n", i);
+        }
         if (log_mode == LOG_TEXT) {
             fprintf(fout, "setting: %u\n", i);
         }

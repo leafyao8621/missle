@@ -23,6 +23,7 @@ int runner_run(unsigned n_param,
                double target_max_spd_low, double target_max_spd_high,
                double missle_max_acc_low, double missle_max_acc_high,
                double missle_max_spd_low, double missle_max_spd_high,
+               char stat,
                char log_mode, FILE *fout);
 
 #endif

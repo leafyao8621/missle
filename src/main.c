@@ -26,6 +26,7 @@ int main(void) {
                    1, 1500,
                    1, 1500,
                    1, 1500,
+                   1,
                    i + 1, fout);
         fclose(fout);
     }
@@ -41,6 +42,7 @@ int main(void) {
                1, 1500,
                1, 1500,
                1, 1500,
+               1,
                LOG_BIN, fout);
     fclose(fout);
     return 0;
