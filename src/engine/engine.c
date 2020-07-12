@@ -64,7 +64,7 @@ int engine_initialize(struct Engine *e,
 }
 
 int engine_step(struct Engine *e, char verbose, FILE *fout) {
-    if (!e || verbose && !fout) {
+    if (!e || (verbose && !fout)) {
         return 1;
     }
     int ret_val = model_update(&e->model);
@@ -79,7 +79,7 @@ int engine_step(struct Engine *e, char verbose, FILE *fout) {
 
 int engine_one_iter(struct Engine *e, char *success, char verbose, FILE *fout) {
     int ret_val = 0;
-    if (!e || !success || verbose && !fout) {
+    if (!e || !success || (verbose && !fout)) {
         return 1;
     }
 
@@ -115,7 +115,7 @@ int engine_one_iter(struct Engine *e, char *success, char verbose, FILE *fout) {
 
 int engine_run(struct Engine *e, double *prob, char verbose, FILE *fout) {
     int ret_val = 0;
-    if (!e || !prob || verbose && !fout) {
+    if (!e || !prob || (verbose && !fout)) {
         return 1;
     }
 

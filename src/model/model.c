@@ -165,6 +165,9 @@ int model_update(struct Model *m) {
 }
 
 int model_log(struct Model *m, FILE *fout) {
+    if (!m || !fout) {
+        return 1;
+    }
     fprintf(fout, "stat: %s\n", stat_lookup[m->stat]);
     fprintf(fout, "%s\n", "missle:");
     fprintf(fout, "fuel: %lf\n", m->fuel);
@@ -175,4 +178,5 @@ int model_log(struct Model *m, FILE *fout) {
     fprintf(fout, "acc: %lf %lf\n", m->target.acc_x, m->target.acc_y);
     fprintf(fout, "vel: %lf %lf\n", m->target.vel_x, m->target.vel_y);
     fprintf(fout, "loc: %lf %lf\n", m->target.loc_x, m->target.loc_y);
+    return 0;
 }
