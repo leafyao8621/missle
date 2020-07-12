@@ -9,7 +9,7 @@ CFLAGS = -lm -pthread
 BIN = main
 
 %.o: %.c
-	$(CC) -g -c $< -o $@
+	$(CC) -O3 -c $< -o $@
 
 $(BIN): $(OBJ)
 	$(CC) $(OBJ) -o $(BIN) $(CFLAGS)

@@ -24,7 +24,7 @@ int main(void) {
         printf("mode: %s\n", ext[i]);
         snprintf(buf, 99, "out/data.%s", ext[i]);
         fout = fopen(buf, "w");
-        runner_run(10000, 24, 10000,
+        runner_run(10000, 24, 100000,
                    1, 1500,
                    1, 1500,
                    1, 1500,
@@ -40,7 +40,7 @@ int main(void) {
     }
     puts("mode: bin");
     fout = fopen("out/data.bin", "wb");
-    runner_run(10000, 24, 10000,
+    runner_run(10000, 24, 100000,
                1, 1500,
                1, 1500,
                1, 1500,
