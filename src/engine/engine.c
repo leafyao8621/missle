@@ -119,7 +119,7 @@ int engine_run(struct Engine *e, double *prob, char verbose, FILE *fout) {
         return 1;
     }
 
-    double n_thread = e->n_thread;
+    unsigned n_thread = e->n_thread;
     struct SubEngine *sub_engines =
         malloc(sizeof(struct SubEngine) * e->n_thread);
     struct SubEngine *sub_engines_iter = sub_engines;
